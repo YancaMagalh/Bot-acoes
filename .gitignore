@@ -1,0 +1,3 @@
+git add .
+git commit -m "remove token e proteger".env 
+node_modules 
