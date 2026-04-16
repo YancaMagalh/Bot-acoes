@@ -160,8 +160,8 @@ client.on('interactionCreate', async interaction => {
   { label: '🛒 Lojinha', value: 'Lojinha' },
   { label: '🔫 Ammunation', value: 'Ammunation' },
   { label: '🐔 Galinheiro', value: 'Galinheiro' },
-  { label: '🥩 Açougue', value: 'Acougue' }
-  { label: '🏦 Niobio', value: 'Niobio' }
+ { label: '🥩 Acougue', value: 'Acougue' },
+{ label: '🏦 Niobio', value: 'Niobio' }
 ]),
       );
 
