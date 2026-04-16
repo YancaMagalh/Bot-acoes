@@ -123,7 +123,7 @@ client.on('interactionCreate', async interaction => {
   { label: '🔫 Ammunation', value: 'Ammunation' },
   { label: '🐔 Galinheiro', value: 'Galinheiro' },
   { label: '🥩 Açougue', value: 'Acougue' },
-  { label: '🏦 Niobio', value: 'Niobio' }
+{ label: '🏦 Niobio', value: 'Niobio' }
 ])
 
       interaction.guild.channels.cache.get(LOG_FINAL).send({ embeds: [embedFinal] });
