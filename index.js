@@ -115,15 +115,16 @@ client.on('interactionCreate', async interaction => {
       const embedFinal = new EmbedBuilder()
         .setTitle('📋 REGISTRO DE AÇÃO')
         .setColor('#00ff88')
-        .addFields(
-          { name: '📍 Local', value: data.local },
-          { name: '📅 Data/Hora', value: data.dataHora },
-          { name: '💳 Tipo', value: data.tipo },
-          { name: '🧍 Refém', value: data.refem },
-          { name: '👮 Responsável', value: `<@${data.dono}>` },
-          { name: '👥 Participantes', value: lista },
-          { name: '📊 Resultado', value: resultado }
-        );
+        .addOptions([
+  { label: '🏦 Banco Central', value: 'Banco Central' },
+  { label: '🏪 Fleeca', value: 'Fleeca' },
+  { label: '💎 Joalheria', value: 'Joalheria' },
+  { label: '🛒 Lojinha', value: 'Lojinha' },
+  { label: '🔫 Ammunation', value: 'Ammunation' },
+  { label: '🐔 Galinheiro', value: 'Galinheiro' },
+  { label: '🥩 Açougue', value: 'Acougue' },
+  { label: '🏦 Niobio', value: 'Niobio' }
+])
 
       interaction.guild.channels.cache.get(LOG_FINAL).send({ embeds: [embedFinal] });
 
