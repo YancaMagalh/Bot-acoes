@@ -37,7 +37,7 @@ client.once('ready', () => {
 
 client.on('interactionCreate', async interaction => {
 
-  // ===== COMANDOS =====
+  // ===== COMANDO PAINEL =====
   if (interaction.isChatInputCommand()) {
 
     if (interaction.commandName === 'painel') {
@@ -115,16 +115,15 @@ client.on('interactionCreate', async interaction => {
       const embedFinal = new EmbedBuilder()
         .setTitle('📋 REGISTRO DE AÇÃO')
         .setColor('#00ff88')
-        .addOptions([
-  { label: '🏦 Banco Central', value: 'Banco Central' },
-  { label: '🏪 Fleeca', value: 'Fleeca' },
-  { label: '💎 Joalheria', value: 'Joalheria' },
-  { label: '🛒 Lojinha', value: 'Lojinha' },
-  { label: '🔫 Ammunation', value: 'Ammunation' },
-  { label: '🐔 Galinheiro', value: 'Galinheiro' },
-  { label: '🥩 Açougue', value: 'Acougue' },
-{ label: '🏦 Niobio', value: 'Niobio' }
-])
+        .addFields(
+          { name: '📍 Local', value: data.local },
+          { name: '📅 Data/Hora', value: data.dataHora },
+          { name: '💳 Tipo', value: data.tipo },
+          { name: '🧍 Refém', value: data.refem },
+          { name: '👮 Responsável', value: `<@${data.dono}>` },
+          { name: '👥 Participantes', value: lista },
+          { name: '📊 Resultado', value: resultado }
+        );
 
       interaction.guild.channels.cache.get(LOG_FINAL).send({ embeds: [embedFinal] });
 
@@ -154,15 +153,15 @@ client.on('interactionCreate', async interaction => {
           .setCustomId('select_local')
           .setPlaceholder('Escolha o local')
           .addOptions([
-  { label: '🏦 Banco Central', value: 'Banco Central' },
-  { label: '🏪 Fleeca', value: 'Fleeca' },
-  { label: '💎 Joalheria', value: 'Joalheria' },
-  { label: '🛒 Lojinha', value: 'Lojinha' },
-  { label: '🔫 Ammunation', value: 'Ammunation' },
-  { label: '🐔 Galinheiro', value: 'Galinheiro' },
- { label: '🥩 Acougue', value: 'Acougue' },
-{ label: '🏦 Niobio', value: 'Niobio' }
-]),
+            { label: '🏦 Banco Central', value: 'Banco Central' },
+            { label: '🏪 Fleeca', value: 'Fleeca' },
+            { label: '💎 Joalheria', value: 'Joalheria' },
+            { label: '🛒 Lojinha', value: 'Lojinha' },
+            { label: '🔫 Ammunation', value: 'Ammunation' },
+            { label: '🐔 Galinheiro', value: 'Galinheiro' },
+            { label: '🥩 Açougue', value: 'Acougue' },
+            { label: '🏦 Niobio', value: 'Niobio' }
+          ])
       );
 
       return interaction.reply({
@@ -214,7 +213,6 @@ client.on('interactionCreate', async interaction => {
       data.refem = interaction.values[0];
 
       const canal = interaction.guild.channels.cache.get(CANAL_ACOES);
-
       const dataHora = new Date().toLocaleString('pt-BR');
 
       const embed = new EmbedBuilder()
